@@ -1,11 +1,10 @@
-
-
 def combination(haystack, needle, repl, pos):
     lst = []
     start = haystack.find(needle, pos)
     if 0 <= start:
         replaced = haystack[:start] + repl + haystack[start + len(needle):]
-        if start+len(repl) < len(haystack):
+        lst.append(replaced)
+        if haystack.find(needle, start+1) != -1:
             lst.extend(combination(replaced, needle, repl, start+len(repl)))
             lst.extend(combination(haystack, needle, repl, start+len(repl)))
     else:
@@ -48,25 +47,25 @@ def convert_ascii_to_german(word):
             if char in combo:
                 new_combinations.extend(
                     combination(combo, char, replacement, 0))
-                new_combinations.remove(combo)
         combinations.extend(new_combinations)
 
     return list(combinations)  # Remove duplicates
 
+# Usage:
+# print(combination("aeaeae","ae","ä",0))
 
-# Example usage
-word = "aeaeoe"
-converted_word = convert_ascii_to_german(word)
-print(f"Conversion of '{word}': {converted_word}")
+# word = "aeoeae"
+# converted_word = convert_ascii_to_german(word)
+# print(f"Conversion of '{word}': {converted_word}")
 
-word = "Gruesse"
-converted_word = convert_ascii_to_german(word)
-print(f"Conversion of '{word}': {converted_word}")
+# word = "Gruesse"
+# converted_word = convert_ascii_to_german(word)
+# print(f"Conversion of '{word}': {converted_word}")
 
-word = "aether"
-converted_word = convert_ascii_to_german(word)
-print(f"Conversion of '{word}': {converted_word}")
+# word = "aether"
+# converted_word = convert_ascii_to_german(word)
+# print(f"Conversion of '{word}': {converted_word}")
 
-word = "GROESSE"
-converted_word = convert_ascii_to_german(word)
-print(f"Conversion of '{word}': {converted_word}")
+# word = "GROESSE"
+# converted_word = convert_ascii_to_german(word)
+# print(f"Conversion of '{word}': {converted_word}")
