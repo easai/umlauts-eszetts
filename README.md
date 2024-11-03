@@ -8,3 +8,7 @@ Here a Python script that generates all possible combinations of a German word w
 ```bash
 poetry run py umlauts\umlauts.py
 ```
+For running the test files,
+```bash
+poetry run pytest
+```
